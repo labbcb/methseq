@@ -7,9 +7,12 @@ FASTA_REGEX = '\\.(fa|fasta)$'
 
 
 def list_dir(directory):
+    files = []
     for dir_path, _, filenames in walk(directory):
         for f in filenames:
-            yield abspath(join(dir_path, f))
+            files.append(abspath(join(dir_path, f)))
+
+    return files
 
 
 def collect_reference_files(directory):
