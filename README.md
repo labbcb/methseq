@@ -132,6 +132,50 @@ methseq emseq \
     /path/to/wgbs_result
 ```
 
+Usage
+
+```bash
+methseq --help
+```
+
+    Usage: methseq [OPTIONS] DESTINATION
+    
+      Automation tool for high-throughput sequencing DNA methylation data
+    
+    Options:
+      --host TEXT                     Cromwell server URL
+      --workflow [wgbs|pico|emseq]    Sequencing protocol for DNA methylation
+                                      profiling  [default: wgbs]
+      --fastq PATH                    Path to directory containing paired-end
+                                      FASTQ files
+      --fastq_1 PATH                  Path to FASTQ files, forward (R1)
+      --fastq_2 PATH                  Path to FASTQ files, reverse (R2)
+      --reference PATH                Path to directory containing reference files
+                                      (including Bisulfite_Genome directory)
+                                      [required]
+      --five_prime_clip_1 INTEGER     Remove bases from the beginning (5') of
+                                      forward strand (R1)
+      --three_prime_clip_1 INTEGER    Remove bases from the end (3') of forward
+                                      strand (R1)
+      --five_prime_clip_2 INTEGER     Remove bases from the beginning (5') of
+                                      reverse strand (R2)
+      --three_prime_clip_2 INTEGER    Remove bases from the end (3') of reverse
+                                      strand (R2)
+      --quality INTEGER               Remove bases at the end that have low Phread
+                                      score  [default: 20]
+      --dont_run                      Do not submit workflow to Cromwell. Just
+                                      create destination directory and write JSON
+                                      and WDL files  [default: False]
+      --sleep INTEGER                 Time to sleep (in seconds) between each
+                                      workflow status check
+      --move                          Move output files to destination directory
+                                      instead of copying them
+      --trimgalore_path_override TEXT
+      --bismark_path_override TEXT
+      --bowtie2_path_override TEXT
+      --fastqc_path_override TEXT
+      --help                          Show this message and exit.
+
 Development
 
 ```bash
