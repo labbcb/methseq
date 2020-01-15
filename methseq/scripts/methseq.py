@@ -93,7 +93,7 @@ def cli(host,
     if three_prime_clip_2 is not None:
         inputs[workflow + ".three_prime_clip_2"] = three_prime_clip_2
 
-    inputs[workflow + ".Trim.quality"] = quality
+    inputs[workflow + ".quality"] = quality
 
     if trimgalore_path_override is not None:
         inputs[workflow + ".trimgalore_path_override"] = trimgalore_path_override
