@@ -60,7 +60,7 @@ def cli(host,
     Automation tool for high-throughput sequencing DNA methylation data
     """
 
-    if fastq_directories is None and (fastq_1_files is None or fastq_2_files is None):
+    if not fastq_directories and (not fastq_1_files or not fastq_2_files):
         click.echo("At least one --fastq (directory) or --fastq_1 and --fastq_2 (files) must be provided.", err=True)
         exit(1)
 
