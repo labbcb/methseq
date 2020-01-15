@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../espresso-caller/.idea/espresso-caller.iml" filepath="$PROJECT_DIR$/../espresso-caller/.idea/espresso-caller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/methseq.iml" filepath="$PROJECT_DIR$/.idea/methseq.iml" />
+    </modules>
+  </component>
+</project>
