@@ -210,7 +210,7 @@ task Align {
     output {
         File bam = basename(fastq_1, ".fq.gz") + "_bismark_bt2_pe.bam"
         File stats = basename(fastq_1, ".fq.gz") + "_bismark_bt2_PE_report.txt"
-        File nucleotide_coverage = basename(fastq_1, ".fq.gz") + "_bismark_bt2_PE.nucleotide_stats.txt"
+        File nucleotide_coverage = basename(fastq_1, ".fq.gz") + "_bismark_bt2_pe.nucleotide_stats.txt"
         File unmapped_1 = basename(fastq_1) + "_unmapped_reads_1.fq.gz"
         File unmapped_2 = basename(fastq_2) + "_unmapped_reads_2.fq.gz"
     }
