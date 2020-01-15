@@ -9,6 +9,12 @@ workflow EMSeq {
         Array[File] index_files_ct
         Array[File] index_files_ga
 
+        Int? five_prime_clip_1
+        Int? three_prime_clip_1
+        Int? five_prime_clip_2
+        Int? three_prime_clip_2
+        Int quality = 20
+
         String? trimgalore_path_override
         String? bismark_path_override
         String? bowtie2_path_override
@@ -19,6 +25,11 @@ workflow EMSeq {
         input:
             fastq_1 = fastq_1,
             fastq_2 = fastq_2,
+            five_prime_clip_1 = five_prime_clip_1,
+            three_prime_clip_1 = three_prime_clip_1,
+            five_prime_clip_2 = five_prime_clip_2,
+            three_prime_clip_2 = three_prime_clip_2,
+            quality = quality,
             trimgalore_path_override = trimgalore_path_override
     }
 

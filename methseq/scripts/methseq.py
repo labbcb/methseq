@@ -85,13 +85,13 @@ def cli(host,
     inputs[workflow + ".index_files_ga"] = index_files_ga
 
     if five_prime_clip_1 is not None:
-        inputs[workflow + ".Trim.five_prime_clip_1"] = five_prime_clip_1
+        inputs[workflow + ".five_prime_clip_1"] = five_prime_clip_1
     if three_prime_clip_1 is not None:
-        inputs[workflow + ".Trim.three_prime_clip_1"] = three_prime_clip_1
+        inputs[workflow + ".three_prime_clip_1"] = three_prime_clip_1
     if five_prime_clip_2 is not None:
-        inputs[workflow + ".Trim.five_prime_clip_2"] = five_prime_clip_2
+        inputs[workflow + ".five_prime_clip_2"] = five_prime_clip_2
     if three_prime_clip_2 is not None:
-        inputs[workflow + ".Trim.three_prime_clip_2"] = three_prime_clip_2
+        inputs[workflow + ".three_prime_clip_2"] = three_prime_clip_2
 
     inputs[workflow + ".Trim.quality"] = quality
 
