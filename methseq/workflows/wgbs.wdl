@@ -333,8 +333,8 @@ task QC {
     >>>
 
     output {
-        File report = sub(basename(file), "\\..+", "_fastqc.html")
-        File reportZip = sub(basename(file), "\\..+", "_fastqc.zip")
+        File report = basename(file, ".fq.gz") + "_fastqc.html"
+        File reportZip = basename(file, ".fq.gz") + "_fastqc.zip"
     }
 
     runtime {
