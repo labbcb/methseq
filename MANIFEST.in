@@ -1,0 +1,6 @@
+include methseq/workflows/emseq.wdl
+include methseq/workflows/emseq-batch.wdl
+include methseq/workflows/pico.wdl
+include methseq/workflows/pico-batch.wdl
+include methseq/workflows/wgbs.wdl
+include methseq/workflows/wgbs-batch.wdl
