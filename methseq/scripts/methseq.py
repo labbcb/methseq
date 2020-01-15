@@ -24,7 +24,7 @@ from ..scripts import submit_workflow
 @click.option('--three_prime_clip_1', type=click.INT, help="Remove bases from the end (3') of forward strand (R1)")
 @click.option('--five_prime_clip_2', type=click.INT, help="Remove bases from the beginning (5') of reverse strand (R2)")
 @click.option('--three_prime_clip_2', type=click.INT, help="Remove bases from the end (3') of reverse strand (R2)")
-@click.option('--quality', type=click.INT, deafult=20,
+@click.option('--quality', type=click.INT, default=20,
               help="Remove bases at the end that have low Phread score", show_default=True)
 @click.option('--dont_run', is_flag=True, default=False, show_default=True,
               help='Do not submit workflow to Cromwell. Just create destination directory and write JSON and WDL files')

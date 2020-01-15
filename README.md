@@ -3,7 +3,7 @@
 Install **methseq** command-line tool
 
 ```bash
-pypi install --force --user git+https://github.com/labbcb/methseq.git
+pip3 install --force --user git+https://github.com/labbcb/methseq.git
 ```
 
 Supported sequencing protocols for identification of DNA methylation
