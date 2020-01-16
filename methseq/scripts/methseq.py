@@ -1,12 +1,11 @@
-import gzip
 from os import mkdir
-from os.path import exists, abspath, join, basename
+from os.path import exists, abspath
 
 import click
 
 from ..fastq import collect_fastq_files
 from ..references import collect_reference_files
-from ..scripts import submit_workflow, subset_paired_fastqs
+from ..scripts import submit_workflow
 
 
 @click.command()
