@@ -19,8 +19,6 @@ from ..scripts import submit_workflow, subset_paired_fastqs
               help='Path to FASTQ files, forward (R1)')
 @click.option('--fastq_2', 'fastq_2_files', multiple=True, type=click.Path(exists=True),
               help='Path to FASTQ files, reverse (R2)')
-@click.option('--sampling', type=click.IntRange(1, 99),
-              help="Randomly subset input FASTQ files given a percentage.")
 @click.option('--reference', 'reference_dir', required=True, type=click.Path(exists=True),
               help='Path to directory containing reference files (including Bisulfite_Genome directory)')
 @click.option('--five_prime_clip_1', type=click.INT, help="Remove bases from the beginning (5') of forward strand (R1)")
@@ -45,7 +43,6 @@ def cli(host,
         fastq_directories,
         fastq_1_files,
         fastq_2_files,
-        sampling,
         reference_dir,
         five_prime_clip_1,
         three_prime_clip_1,
@@ -79,31 +76,11 @@ def cli(host,
         fastq_1_files.extend(forward_files)
         fastq_2_files.extend(reverse_files)
 
-    inputs = dict()
-
-    if sampling:
-        subset_fastq_1_files = []
-        subset_fastq_2_files = []
-        for fastq_1, fastq_2 in zip(fastq_1_files, fastq_2_files):
-            subset_fastq_1 = join(destination, "subset-{}p_{}.fastq.gz".format(sampling, basename(fastq_1)))
-            subset_fastq_2 = join(destination, "subset-{}p_{}.fastq.gz".format(sampling, basename(fastq_2)))
-            click.echo("Sampling {} to {}".format(fastq_1, subset_fastq_1), err=True)
-            click.echo("Sampling {} to {}".format(fastq_2, subset_fastq_2), err=True)
-            output_file_1 = gzip.open(subset_fastq_1, 'wb')
-            output_file_2 = gzip.open(subset_fastq_2, 'wb')
-            subset_paired_fastqs(fastq_1, fastq_2, output_file_1, output_file_2, sampling)
-            output_file_1.close()
-            output_file_2.close()
-            subset_fastq_1_files.append(subset_fastq_1)
-            subset_fastq_2_files.append(subset_fastq_2)
-        inputs[workflow + ".fastqs_1"] = subset_fastq_1_files
-        inputs[workflow + ".fastqs_2"] = subset_fastq_2_files
-    else:
-        inputs[workflow + ".fastqs_1"] = fastq_1_files
-        inputs[workflow + ".fastqs_2"] = fastq_2_files
-
     genome_files, index_files_ct, index_files_ga = collect_reference_files(reference_dir)
 
+    inputs = dict()
+    inputs[workflow + ".fastqs_1"] = fastq_1_files
+    inputs[workflow + ".fastqs_2"] = fastq_2_files
     inputs[workflow + ".genome_files"] = genome_files
     inputs[workflow + ".index_files_ct"] = index_files_ct
     inputs[workflow + ".index_files_ga"] = index_files_ga
