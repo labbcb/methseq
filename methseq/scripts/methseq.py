@@ -86,6 +86,8 @@ def cli(host,
         for fastq_1, fastq_2 in zip(fastq_1_files, fastq_2_files):
             subset_fastq_1 = join(destination, "subset-{}p_{}.fastq.gz".format(sampling, basename(fastq_1)))
             subset_fastq_2 = join(destination, "subset-{}p_{}.fastq.gz".format(sampling, basename(fastq_2)))
+            click.echo("Sampling {} to {}", fastq_1, subset_fastq_1, err=True)
+            click.echo("Sampling {} to {}", fastq_2, subset_fastq_2, err=True)
             subset_paired_fastqs(fastq_1, fastq_2, subset_fastq_1, subset_fastq_2, sampling)
             subset_fastq_1_files.append(subset_fastq_1)
             subset_fastq_2_files.append(subset_fastq_2)

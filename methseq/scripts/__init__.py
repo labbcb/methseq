@@ -23,6 +23,7 @@ def count_fastq_reads(file):
         pass
     return int((i + 1) / 4)
 
+
 def subset_paired_fastqs(fastq_1, fastq_2, destination_1, destination_2, percentage=10):
     is_gz_1 = is_gzip(fastq_1)
     if is_gz_1:
