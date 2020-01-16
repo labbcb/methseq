@@ -53,7 +53,7 @@ def subset_paired_fastqs(fastq_1, fastq_2, destination_1, destination_2, percent
         raise Exception("Number of reads of R1 ({}) is different of R2 ({}).".format(num_reads_1, num_reads_2))
 
     num_reads = num_reads_1
-    num_subset_reads = int(num_reads/percentage)
+    num_subset_reads = int(num_reads * percentage / 100)
     random_reads = sample(range(num_reads), num_subset_reads)
     random_reads.sort()
 
