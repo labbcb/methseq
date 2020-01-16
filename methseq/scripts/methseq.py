@@ -1,3 +1,4 @@
+import gzip
 from os import mkdir
 from os.path import exists, abspath, join, basename
 
@@ -86,9 +87,13 @@ def cli(host,
         for fastq_1, fastq_2 in zip(fastq_1_files, fastq_2_files):
             subset_fastq_1 = join(destination, "subset-{}p_{}.fastq.gz".format(sampling, basename(fastq_1)))
             subset_fastq_2 = join(destination, "subset-{}p_{}.fastq.gz".format(sampling, basename(fastq_2)))
-            click.echo("Sampling {} to {}", fastq_1, subset_fastq_1, err=True)
-            click.echo("Sampling {} to {}", fastq_2, subset_fastq_2, err=True)
-            subset_paired_fastqs(fastq_1, fastq_2, subset_fastq_1, subset_fastq_2, sampling)
+            click.echo("Sampling {} to {}".format(fastq_1, subset_fastq_1), err=True)
+            click.echo("Sampling {} to {}".format(fastq_2, subset_fastq_2), err=True)
+            output_file_1 = gzip.open(subset_fastq_1, 'wb')
+            output_file_2 = gzip.open(subset_fastq_2, 'wb')
+            subset_paired_fastqs(fastq_1, fastq_2, output_file_1, output_file_2, sampling)
+            output_file_1.close()
+            output_file_2.close()
             subset_fastq_1_files.append(subset_fastq_1)
             subset_fastq_2_files.append(subset_fastq_2)
         inputs[workflow + ".fastqs_1"] = subset_fastq_1_files

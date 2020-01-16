@@ -25,6 +25,14 @@ def count_fastq_reads(file):
 
 
 def subset_paired_fastqs(fastq_1, fastq_2, destination_1, destination_2, percentage=10):
+    """
+    Subset paired-end (gzipped) FASTQ files given a percentage
+    :param fastq_1: file path to FASTQ file, forward (R1)
+    :param fastq_2: file path to FASTQ file, forward (R2)
+    :param destination_1: file object for sampled FASTQ file (R1) in write and binary modes (wb)
+    :param destination_2: file object for sampled FASTQ file (R2) in write and binary modes (wb)
+    :param percentage: percentage to sample both FASTQ files
+    """
     is_gz_1 = is_gzip(fastq_1)
     if is_gz_1:
         file_1 = gzip.open(fastq_1)
