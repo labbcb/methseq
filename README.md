@@ -76,11 +76,6 @@ How to use
 methseq accel|pico|emseq --fastq /path/to/fastqs [--fastq /path/to/other_fastqs] [trimming parameters] result_dir
 ```
 
-When working with HTS DNA methylation data, it is recommended to remove methylation bias that can be saw in M-Bias plot.
-However, this plot are generated at the last step of the workflow (methylation extraction).
-Running HTS datasets without trimming parameter just to check M-Bias plot may take much time (and money).
-Use `--sampling N` to run a down-sampled files of N percent of raw sequencing reads (we recommend 10).  
-
 By default, trimming step will only trim (Illumina) adapter sequences.
 Use the following trimming parameters to cut sequences after adapter removal.
 It is useful to remove methylation bias saw in M-Bias plot.
