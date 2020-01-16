@@ -185,7 +185,9 @@ task Align {
             --bowtie2 \
             ~{'--bowtie2_path ' + bowtie2_path_override} \
             --bam \
-            --parallel ~{cores}
+            --parallel ~{cores} \
+            --un \
+            --nucleotide_coverage
     >>>
 
     output {
