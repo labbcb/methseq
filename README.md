@@ -1,6 +1,6 @@
-# methseq - Automation tool for high-throughput sequencing DNA methylation data
+# MethSeq - Automation tool for high-throughput sequencing DNA methylation data
 
-Install **methseq** command-line tool
+Install **MethSeq** command-line tool
 
 ```bash
 pip3 install --force --user git+https://github.com/labbcb/methseq.git
@@ -32,7 +32,7 @@ Used software via Docker container images
 - Bowtie 2.3.5.1
 - FastQC 
 
-> Your compute environment may not support Docker. Install those software locally and overwrite their paths using **methseq** command-line parameters.
+> Your compute environment may not support Docker. Install those software locally and overwrite their paths using **MethSeq** command-line parameters.
 
 Main data processing tasks
 
@@ -91,7 +91,7 @@ Use `--quality N` to change quality cutoff to `N`.
 By default, trimming step will filter trimmed reads that are smaller than 20 bp.
 Use `--length N` to change read length cutoff to `N`. 
 
-**methseq** will
+**MethSeq** will
 
 1. Check if all samples are paired FASTQ files
 2. Check if indexed reference genome files exists
@@ -127,56 +127,27 @@ methseq emseq \
     /path/to/wgbs_result
 ```
 
-Usage
+## Development
+
+Clone git repository from GitHub.
 
 ```bash
-methseq --help
+git clone https://github.com/labbcb/methseq.git
+cd methseq
 ```
 
-    Usage: methseq [OPTIONS] DESTINATION
-    
-      Automation tool for high-throughput sequencing DNA methylation data
-    
-    Options:
-      --host TEXT                     Cromwell server URL
-      --workflow [wgbs|pico|emseq]    Sequencing protocol for DNA methylation
-                                      profiling  [default: wgbs]
-      --fastq PATH                    Path to directory containing paired-end
-                                      FASTQ files
-      --fastq_1 PATH                  Path to FASTQ files, forward (R1)
-      --fastq_2 PATH                  Path to FASTQ files, reverse (R2)
-      --reference PATH                Path to directory containing reference files
-                                      (including Bisulfite_Genome directory)
-                                      [required]
-      --five_prime_clip_1 INTEGER     Remove bases from the beginning (5') of
-                                      forward strand (R1)
-      --three_prime_clip_1 INTEGER    Remove bases from the end (3') of forward
-                                      strand (R1)
-      --five_prime_clip_2 INTEGER     Remove bases from the beginning (5') of
-                                      reverse strand (R2)
-      --three_prime_clip_2 INTEGER    Remove bases from the end (3') of reverse
-                                      strand (R2)
-      --quality INTEGER               Remove bases at the end that have low Phread
-                                      score  [default: 20]
-      --dont_run                      Do not submit workflow to Cromwell. Just
-                                      create destination directory and write JSON
-                                      and WDL files  [default: False]
-      --sleep INTEGER                 Time to sleep (in seconds) between each
-                                      workflow status check
-      --move                          Move output files to destination directory
-                                      instead of copying them
-      --trimgalore_path_override TEXT
-      --bismark_path_override TEXT
-      --bowtie2_path_override TEXT
-      --fastqc_path_override TEXT
-      --help                          Show this message and exit.
-
-Development
+Create virtual environment and install development version.
 
 ```bash
-git clone git@github.com:labbcb/methseq.git
-cd methseq
 python3 -m venv venv
 source venv/bin/activate
-pip install .
+pip install --requirement requirements.txt
+```
+
+Publish new methseq version to Pypi.
+
+```bash
+pip install setuptools wheel twine
+python setup.py sdist bdist_wheel
+twine upload -u $PYPI_USER -p $PYPI_PASS dist/*
 ```
