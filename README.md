@@ -1,18 +1,12 @@
 # MethSeq - Automation tool for high-throughput sequencing DNA methylation data
 
-Install **MethSeq** command-line tool
-
-```bash
-pip3 install --force --user git+https://github.com/labbcb/methseq.git
-```
-
 Supported sequencing protocols for identification of DNA methylation
 
 - WGBS
 - Pico-Methyl
 - EMSeq
 
-> Reduced-representation bisulfite sequencing (RRBS) data is not supported!
+> Reduced-representation bisulfite sequencing (RRBS) is not supported!
 
 Required software
 
@@ -118,36 +112,11 @@ methseq wgbs \
 ```
 
 To process a single sample (EMSeq) passing path to specific file.
-It is useful to run **methseq** on files that are in the same directory with other files.
+It is useful to run **MethSeq** on files that are not in the same directory.
 
 ```bash
 methseq emseq \
     --fastq_1 /path/to/emseq_1.fastq.gz \
     --fastq_2 /path/to/emseq_2.fastq.gz \
     /path/to/wgbs_result
-```
-
-## Development
-
-Clone git repository from GitHub.
-
-```bash
-git clone https://github.com/labbcb/methseq.git
-cd methseq
-```
-
-Create virtual environment and install development version.
-
-```bash
-python3 -m venv venv
-source venv/bin/activate
-pip install --requirement requirements.txt
-```
-
-Publish new methseq version to Pypi.
-
-```bash
-pip install setuptools wheel twine
-python setup.py sdist bdist_wheel
-twine upload -u $PYPI_USER -p $PYPI_PASS dist/*
 ```
